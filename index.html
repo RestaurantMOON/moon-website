@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MOON – Coming Soon</title>
+
   <style>
     body {
       margin: 0;
@@ -11,31 +12,76 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #0b1e3a;
-      color: #f5f5f5;
+      background: radial-gradient(circle at top, #0d2245, #050d1f);
+      color: #f5f1e8;
       font-family: 'Georgia', serif;
       text-align: center;
+      overflow: hidden;
+    }
+
+    /* STARS */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+
+    .stars::before, .stars::after {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background-image: radial-gradient(white 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: moveStars 60s linear infinite;
+      opacity: 0.3;
+    }
+
+    .stars::after {
+      animation-duration: 120s;
+      opacity: 0.15;
+    }
+
+    @keyframes moveStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-500px); }
     }
 
     .container {
+      position: relative;
+      z-index: 2;
       max-width: 500px;
     }
 
+    /* GLOWING MOON */
     .moon {
-      font-size: 60px;
+      font-size: 70px;
       margin-bottom: 20px;
+      color: #f2c94c;
+      text-shadow:
+        0 0 10px #f2c94c,
+        0 0 20px #f2c94c,
+        0 0 40px #f2c94c;
+      animation: glow 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #f2c94c, 0 0 20px #f2c94c; }
+      to { text-shadow: 0 0 20px #f2c94c, 0 0 40px #f2c94c, 0 0 60px #f2c94c; }
     }
 
     h1 {
-      font-size: 48px;
+      font-size: 52px;
       margin: 10px 0;
-      letter-spacing: 2px;
+      letter-spacing: 4px;
     }
 
     h2 {
       font-size: 28px;
       margin: 0 0 20px;
       font-weight: normal;
+      opacity: 0.9;
     }
 
     p {
@@ -43,33 +89,53 @@
       margin-bottom: 30px;
     }
 
-    .stars {
-      font-size: 24px;
+    /* INSTAGRAM BUTTON */
+    .insta {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 1px solid #f2c94c;
       color: #f2c94c;
-      margin-bottom: 20px;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .insta:hover {
+      background: #f2c94c;
+      color: #0b1e3a;
+      box-shadow: 0 0 15px #f2c94c;
     }
 
     .footer {
       position: absolute;
       bottom: 20px;
       width: 100%;
-      font-size: 14px;
-      opacity: 0.6;
+      font-size: 13px;
+      opacity: 0.5;
     }
   </style>
 </head>
+
 <body>
+  <div class="stars"></div>
+
   <div class="container">
     <div class="moon">🌙</div>
     <h1>MOON</h1>
     <h2>მთვარე</h2>
-    <div class="stars">✦ ✦</div>
-    <p>Restaurant • Lounge • Culture<br>Telavi, Georgia</p>
+
+    <p>Restaurant • Lounge • Culture</p>
+
     <p><strong>Coming Soon</strong></p>
+
+    <a class="insta" href="https://www.instagram.com/restaurant_mtvare/" target="_blank">
+      Follow us on Instagram
+    </a>
   </div>
 
   <div class="footer">
-    Follow us on Instagram @moon.telavi
+    Some nights aren’t lived — they’re felt 🌙
   </div>
 </body>
 </html>
